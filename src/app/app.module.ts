@@ -1,16 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule, RouterState} from '@angular/router';
+import {LocationStrategy,PathLocationStrategy}from '@angular/common';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component'
+import {TestComponent} from './test/test.component'
+
+const appRoutes: Routes = [  
+  { path: '', component: TestComponent },
+  { path: 'test', component: TestComponent}
+]
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TestComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes),
   ],
-  providers: [],
+  providers: [
+    {provide: LocationStrategy, useClass: PathLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }
