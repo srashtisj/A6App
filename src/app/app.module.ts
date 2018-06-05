@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, RouterState} from '@angular/router';
-import {LocationStrategy,PathLocationStrategy}from '@angular/common';
+import {LocationStrategy,PathLocationStrategy, HashLocationStrategy}from '@angular/common';
 
 import {AppComponent} from './app.component'
 import {TestComponent} from './test/test.component'
@@ -21,7 +21,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
   ],
   providers: [
-    {provide: LocationStrategy, useClass: PathLocationStrategy }
+    {provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })
